@@ -42,12 +42,12 @@ with st.sidebar:
 
 
 # Validate file upload
-if "text_uploaded_files" not in st.session_state or not st.session_state["text_uploaded_files"]:
+if "uploaded_files" not in st.session_state or not st.session_state["uploaded_files"]:
     st.warning("No files uploaded! Please upload some files.")
     st.stop()
 
 # Get the uploaded files
-uploaded_files = st.session_state["text_uploaded_files"]
+uploaded_files = st.session_state["uploaded_files"]
 uploaded_file_paths = []
 
 # Save files temporarily and collect paths
