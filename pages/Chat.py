@@ -42,12 +42,12 @@ with st.sidebar:
 
 
 # Validate file upload
-if "uploaded_files" not in st.session_state or not st.session_state["uploaded_files"]:
+if "text_uploaded_files" not in st.session_state or not st.session_state["text_uploaded_files"]:
     st.warning("No files uploaded! Please upload some files.")
     st.stop()
 
 # Get the uploaded files
-uploaded_files = st.session_state["uploaded_files"]
+uploaded_files = st.session_state["text_uploaded_files"]
 uploaded_file_paths = []
 
 # Save files temporarily and collect paths
@@ -58,11 +58,11 @@ for file in uploaded_files:
     uploaded_file_paths.append(temp_path)
 
 # Initialize chat messages
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+if "doc_messages" not in st.session_state:
+    st.session_state["doc_messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
 # Display chat messages
-for msg in st.session_state["messages"]:
+for msg in st.session_state["doc_messages"]:
     st.chat_message(msg["role"]).write(msg["content"])
 
 # Handle user input
@@ -86,8 +86,8 @@ if prompt := st.chat_input("Ask your question about the document(s):"):
         response = model.generate_content([prompt] + uploaded_samples)
 
     # Save the conversation
-    st.session_state["messages"].append({"role": "user", "content": prompt})
-    st.session_state["messages"].append({"role": "assistant", "content": response.text})
+    st.session_state["doc_messages"].append({"role": "user", "content": prompt})
+    st.session_state["doc_messages"].append({"role": "assistant", "content": response.text})
 
     # Display the assistant's response
     st.chat_message("assistant").write(response.text)
