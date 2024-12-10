@@ -3,7 +3,7 @@ import google.generativeai as genai
 import time
 from Home import *
 
-st.logo("Assets/drdo-logo.png")
+st.logo("Assets/dummy_logo.png")
 
 hide_streamlit_style = """
     <style>
