@@ -76,37 +76,61 @@ if not st.session_state.get("video_ready", False):
     st.session_state["video_ready"] = True
 
 # Chat Interaction
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [
-        {"role": "assistant", "content": "How can I help you analyze this video?"}
-    ]
+# if "messages" not in st.session_state:
+#     st.session_state["messages"] = [
+#         {"role": "assistant", "content": "How can I help you analyze this video?"}
+#     ]
 
-# Display chat messages
-for msg in st.session_state["messages"]:
+# # Display chat messages
+# for msg in st.session_state["messages"]:
+#     st.chat_message(msg["role"]).write(msg["content"])
+
+# # Handle user input
+# if user_input := st.chat_input("Ask a question about the video (e.g., summarize, create quiz):"):
+#     # Temporary "thinking" response
+#     st.session_state["messages"].append({"role": "assistant", "content": "Processing your request..."})
+
+#     # Generate response using Gemini
+#     gemini_video_file = st.session_state["gemini_video_file"]
+
+
+#     with st.spinner("The assistant is thinking..."):
+
+#         model = genai.GenerativeModel(model_name="gemini-1.5-pro")
+#         response = model.generate_content(
+#             [gemini_video_file, user_input],
+#             request_options={"timeout": 600}
+#         )
+
+#     # Save the conversation
+#     st.session_state["messages"].append({"role": "user", "content": user_input})
+#     st.session_state["messages"].append({"role": "assistant", "content": response.text})
+
+#     # Display the assistant's response
+#     st.chat_message("assistant").write(response.text)
+
+#     st.rerun()
+
+# Initialize chat messages for video.py
+if "video_messages" not in st.session_state:
+    st.session_state["video_messages"] = [{"role": "assistant", "content": "How can I help you analyze this video?"}]
+
+# Display chat messages for video.py
+for msg in st.session_state["video_messages"]:
     st.chat_message(msg["role"]).write(msg["content"])
 
-# Handle user input
+# Handle user input for video.py
 if user_input := st.chat_input("Ask a question about the video (e.g., summarize, create quiz):"):
-    # Temporary "thinking" response
-    st.session_state["messages"].append({"role": "assistant", "content": "Processing your request..."})
+    # Add the user message
+    st.session_state["video_messages"].append({"role": "user", "content": user_input})
 
-    # Generate response using Gemini
-    gemini_video_file = st.session_state["gemini_video_file"]
-
-
+    # Generate response
     with st.spinner("The assistant is thinking..."):
-
-        model = genai.GenerativeModel(model_name="gemini-1.5-pro")
-        response = model.generate_content(
-            [gemini_video_file, user_input],
-            request_options={"timeout": 600}
-        )
-
-    # Save the conversation
-    st.session_state["messages"].append({"role": "user", "content": user_input})
-    st.session_state["messages"].append({"role": "assistant", "content": response.text})
+        response = "This is a placeholder response for video.py."
+        st.session_state["video_messages"].append({"role": "assistant", "content": response})
 
     # Display the assistant's response
-    st.chat_message("assistant").write(response.text)
+    st.chat_message("assistant").write(response)
 
     st.rerun()
+
