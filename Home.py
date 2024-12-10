@@ -4,7 +4,7 @@ import time
 st.set_page_config(page_title="Chat", page_icon=":material/home:", layout="wide")
 
 
-st.logo("Assets/drdo-logo.png")
+st.logo("Assets/dummy_logo.png")
 
 hide_streamlit_style = """
     <style>
