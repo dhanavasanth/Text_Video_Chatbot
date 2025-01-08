@@ -1,6 +1,5 @@
 import streamlit as st
 import google.generativeai as genai
-import 
 import time
 from Home import *
 from dotenv import load_dotenv
