@@ -68,7 +68,7 @@ for msg in st.session_state["doc_messages"]:
 # Handle user input
 if prompt := st.chat_input("Ask your question about the document(s):"):
     # Ensure API key exists
-    api_key = "AIzaSyD9qz-ZAkQcaUZDZKuhWt0GwDAgCHUgbks" 
+    api_key = "AIzaSyAGrh87fh-YjmctONh_g3uei-oY4yMIDw0" 
     if not api_key:
         st.info("Please provide your Gemini API key.")
         st.stop()
