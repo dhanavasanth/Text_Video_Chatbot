@@ -15,7 +15,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Configure Gemini API
-GEMINI_API_KEY = "AIzaSyD9qz-ZAkQcaUZDZKuhWt0GwDAgCHUgbks"  # Replace with your API key
+GEMINI_API_KEY = "AIzaSyAGrh87fh-YjmctONh_g3uei-oY4yMIDw0"  # Replace with your API key
 if not GEMINI_API_KEY:
     st.error("Gemini API key is missing. Please provide it.")
     st.stop()
